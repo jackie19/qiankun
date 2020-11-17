@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <div id="nav" v-if="!isRemoteApp">
       <router-link to="/">Home</router-link>
       |
       <router-link to="/about">About</router-link>
@@ -8,7 +8,15 @@
     <router-view/>
   </div>
 </template>
-
+<script>
+export default {
+  data() {
+    return {
+      isRemoteApp: window.__POWERED_BY_QIANKUN__
+    }
+  }
+}
+</script>
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
